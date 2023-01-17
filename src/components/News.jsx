@@ -1,9 +1,20 @@
+import { Component } from 'react';
+import NewsForm from './NewsForm';
+import NewsList from './NewsList';
 
-export default function News() {
-  return (
-    <div className="App">
-     
-    </div>
-  );
+
+export default class News extends Component {
+  handleSubmit = payload => {
+    const { addNews, selectedCategory } = this.props;
+    addNews({ ...payload, categoryId: selectedCategory });
+  }
+  render() {
+    const { news } = this.props;
+    return (
+      <div className="App">
+        <NewsForm onSubmit={this.handleSubmit} />
+        <NewsList news={news} />
+      </div>
+    );
+  }
 }
-

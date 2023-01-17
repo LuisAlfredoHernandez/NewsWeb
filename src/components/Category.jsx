@@ -1,15 +1,15 @@
 import CategoryForm from './CategoryForm';
 import CategoryList from './CategoryList';
+import { Component } from 'react';
 
-
-export default function Category(props) {
-  const { handleSubmit, categories } = props;
-  
+export default class Category extends Component {
+  render() {
+    const { addCategory, categories, selectCategory } = this.props;
     return (
-    <div className="App">
-      <CategoryForm handleSubmit={handleSubmit}/>
-      <CategoryList categories={categories}/>
-    </div>
-  );
+      <div className="App">
+        <CategoryForm onSubmit={addCategory} />
+        <CategoryList categories={categories} selectCategory={selectCategory} />
+      </div>
+    );
+  }
 }
-
